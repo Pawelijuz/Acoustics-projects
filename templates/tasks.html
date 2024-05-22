@@ -1,0 +1,89 @@
+
+{% extends 'glowny.html' %}
+{% block tytul %} Tasks list {% endblock %}
+{% block strona %}
+</br>
+<div class="container-fluid  bg-light ">
+   <a href="{% url 'wszystkie_projekty' %}" class="btn btn-success">Back to main</a>
+    <div class="container-fluid py-7 h-200">
+        <div class="row d-flex justify-content-center align-items-center h-500">
+            <div class="col-20 col-xl-20">
+                <div class="card mask-custom">
+                    <div class="card-body">
+                        <div class="text-center pt-3 pb-2">
+                           <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-todo-list/check1.webp"
+                           alt="Check" width="60">
+                           <h2 class="my-4">Task List</h2>
+                        </div>
+              <table class="table  ">
+                 <thead>
+                    <tr>
+                        <th scope="col"></th>
+                       <th scope="col">Assignee</th>
+                       <th scope="col">Project</th>
+                       <th scope="col">Task</th>
+                       <th scope="col">Status</th>
+                       <th scope="col">Deadline</th>
+                       <th scope="col">Days left</th>
+                       <th scope="col">Actions</th>
+                    </tr>
+                 </thead>
+                 {% for task in user_tasks %}
+                 <tbody>
+                 
+                    
+                        {% if task.confirmation_day < today %} 
+                           {% if task.status == "TO DO" %}
+                              <td class="border-0 align-middle"><center><i class="fa-regular fa-bell fa-shake fa-xl" style="color: #f52905;"></i></center></td>
+                           {% else %}
+                           <td class="border-0 align-middle"><center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center></td>   
+                           {% endif %}
+                        {% else %}
+                        <td class="border-0 align-middle"><center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center></td>
+                        {% endif %}
+                   
+                       <th class="border-0">
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+                             alt="avatar 1" style="width: 45px; height: auto;">
+                          <span class="ms-2">{{task.assignee}}</span>
+                       </th>
+                       <td class="border-0 align-middle">
+                        IC {{task.projekt}}</span>
+                     </td>
+                       <td class="border-0 align-middle">
+                          <a href=" " data-mdb-toggle="tooltip" title="Done">
+                          {{task.category}}
+                          </a>
+                       </td>
+                       </a>
+                       <td class="border-0 align-middle">
+                          {{task.status}}</span>
+                       </td>
+                       <td class="border-0 align-middle">{{task.confirmation_day}}</td>
+
+                       
+                       <td class="border-0 align-middle"><center><h6> {{ today|timesince:task.confirmation_day }} </h6></center></td>
+                           
+
+                       <td class="border-0 align-middle">
+                          <a href="" data-mdb-toggle="tooltip" title="Done">
+                          <a href="{% url 'edit_task' task.id %}" class="btn btn-success">Update status</a>  
+                       </td>
+                       <td class="border-0 align-middle">
+                           {% with task.comments.count as task_comments %}
+                           <h6> Comments: {{task_comments}} </h6>
+                           {% endwith %}
+                       </td>
+                       <td class="border-0 align-middle">
+                         <a href="{% url 'view_comments' task.id %}" class="btn btn-success">View comments</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                 </tbody>
+              </table>
+           </div>
+        </div>
+     </div>
+  </div>
+</div>
+{% endblock  %} 

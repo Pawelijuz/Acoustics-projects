@@ -1,0 +1,82 @@
+{% extends 'glowny.html' %}
+{% load crispy_forms_tags %}
+{% block strona %}
+</br>
+{% block detal %}
+<div class="container-fluid  bg-light ">
+   <a href="{% url 'wszystkie_projekty' %}" class="btn btn-success">Back to main</a>
+   <a href="{% url 'create-task' projekt.id %}" class="btn btn-success">Create task</a
+     <div class="container-fluid py-5 h-100">
+       <div class="row d-flex justify-content-center align-items-center h-500">
+          <div class="col-md-12 col-xl-12">
+             <div class="card mask-custom">
+               <div class="card-body p-4 ">
+                   <div class="row">
+                      <h5 class="border-0 align-left">
+                         IC {{projekt.Numer_IC}} {{ projekt.Nazwa }}
+                      </h5>
+                   </div>
+                </div>
+             </div>
+             <div class="card mask-custom">
+               <div class="card-body p-4 ">
+                   <div class="row">
+                      <p class="border-0 align-left">
+                       {{projekt.Opis}}
+                      </p>
+                   </div>
+                </div>
+             </div>
+             <div class="card mask-custom">
+               <div class="card-body p-4 ">
+                   <div class="row">             
+                      <table class="table">
+                       <thead>
+                         <tr>
+                           <th>Category</th>
+                           <th>Status</th>
+                           <th>Assignee</th>
+                           <th>Due date</th>
+                           <th>Drawings confirmation</th>
+                         </tr>
+                       </thead>
+                       {% for task in task %}
+                           <tbody>
+                           <tr>
+                           <td>{{ task.category }}</td>
+                           <td>{{ task.status }}</td>
+                           <td>{{ task.assignee }}</td>
+                           <td>{{ task.due_date }}</td>
+                           <td>{{ task.confirmation_day }}</td>
+                           </tr>
+                           <td>
+                           <h6>
+                           Comments:
+                           </h6>                           
+                           {% for comment in task.comments.all %}
+                              <div class="comment">
+                               <p class="info">
+                                 <button type="button" class="btn btn-primary btn-sm"><a href="{% url 'edit_comment' comment.id %}">&nbsp;&nbsp;Edit&nbsp;&nbsp;</a></button>
+                                 <button type="button" class="btn btn-danger btn-sm"><a href="{% url 'delete_comment' comment.id %}">Delete</a></button>    
+
+                              <b>{{comment.id}} {{ comment.created }} added by {{ comment.name }}:</b> {{ comment.body }} 
+                              
+                              </p>
+                              </div>
+                              {% empty %}
+                               <p> No comments yet. </p>
+                           {% endfor %}
+                           </td>
+                           <td>
+                              <a href="{% url 'add_new_comment_projects' task.id %}  " class="btn btn-success">Add new comment</a>
+                           </tbody>
+                       {% endfor%}
+                     </table>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+{% endblock  %}    
+{% endblock  %} 

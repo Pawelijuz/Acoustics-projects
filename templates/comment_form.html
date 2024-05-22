@@ -1,0 +1,14 @@
+{% extends 'glowny.html' %}
+{% load bootstrap %}
+
+{% block tytul %} Comment form {% endblock %}
+
+{% block strona %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|bootstrap }}
+        <button type="submit">Add comment</button>
+    </form>
+        <a href="{% url 'tasks' %}">Cofnij</a>
+{% endblock %}
+

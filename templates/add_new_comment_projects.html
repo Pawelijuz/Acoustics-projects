@@ -1,0 +1,57 @@
+{% extends 'glowny.html' %}
+
+{% block strona %}
+</br>
+{% block detal %}
+<div class="container-fluid  bg-light ">
+   
+   <a href="{% url 'project-detail' projekt.id %}" class="btn btn-success">Back to project details</a>
+
+     <div class="container-fluid py-5 h-100">
+       <div class="row d-flex justify-content-center align-items-center h-500">
+          <div class="col-md-12 col-xl-12">            
+               <div class="card-body p-4 ">
+                   <div class="row">
+                      <h5 class="border-0 align-left">
+                      </h5>
+                   </div>
+                </div>
+             </div>
+             <div class="card mask-custom">
+               <div class="card-body p-4 ">
+                   <div class="row">
+                      <p class="border-0 align-left">
+                       {{projekt.Numer_IC}} {{ projekt.Nazwa }}  {{task.category}}
+                      </p>
+                   </div>
+                </div>
+             </div>
+             <div class="card mask-custom">
+               <div class="card-body p-4 ">
+                   <div class="row">             
+                      <table class="table">
+                           <td>
+                              {% if new_comment %}
+                                 <h6> Comment added </h6>
+                              {% else %}
+                                    <form method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <h6> Your name </h6>
+                                    {{ form.name }}<br>
+                                    <h6>Comment</h6>
+                                    {{ form.body }}
+
+                                    <p><input type="submit" class="btn btn-success" value="Add comment" ></p>
+                                   
+                                 </form>
+                              {% endif %}
+                           </tbody>
+                     </table>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+{% endblock  %}    
+{% endblock  %} 

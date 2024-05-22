@@ -1,0 +1,25 @@
+{% extends 'glowny.html' %}
+{% load bootstrap %}
+{% block tytul %} Zaloguj się {% endblock %}
+
+{% block strona %}
+<i class="fa-solid fa-right-to-bracket fa-beat"></i>
+
+
+<div class="card" style="width: 26rem;">
+  <div class="card-body">
+    <h5 class="card-title">Rejestr projektów - logowanie</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">Zaloguj się do rejestru projektów</h6>
+    <p class="card-text">Zaloguj się</p>
+    <form method="post">
+        {% csrf_token %}
+        {% comment %}
+        #<input type="hidden" name="group" value="{{ user.group }}">
+        #<input type="submit" value="Login">
+        {% endcomment %}
+        {{ form|bootstrap }}
+        <button type="submit" class="btn btn-primary">Zaloguj się <i class="fas fa-sign-in-alt"></i></button>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends 'glowny.html' %}
+{% block tytul %} Logout {% endblock %}
+{% block strona %}
+<br>
+<br>
+<h4> You were logged out! </h4>
+<button type="button" class="btn btn-outline-dark"><a href="{% url 'login' %}">Login</a></button>
+{% endblock %}

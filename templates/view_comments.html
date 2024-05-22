@@ -1,0 +1,57 @@
+{% extends 'glowny.html' %}
+{% load crispy_forms_tags %}
+{% block strona %}
+</br>
+{% block detal %}
+<div class="container-fluid  bg-light ">
+   <a href="{% url 'tasks' %}" class="btn btn-success">Back</a>
+   
+     <div class="container-fluid py-5 h-100">
+       <div class="row d-flex justify-content-center align-items-center h-500">
+          <div class="col-md-12 col-xl-12">
+             <div class="card mask-custom">
+               <div class="card-body p-4 ">
+                   <div class="row">
+                      <h5 class="border-0 align-left">
+                      </h5>
+                   </div>
+                </div>
+             </div>
+             <div class="card mask-custom">
+               <div class="card-body p-4 ">
+                   <div class="row">
+                      <p class="border-0 align-left">
+                       Comments for task: {{ task }}
+                      </p>
+                   </div>
+                </div>
+             </div>
+             <div class="card mask-custom">
+               <div class="card-body p-4 ">
+                   <div class="row">             
+                      <table class="table">
+                           <tbody>
+                           {% for comment in task.comments.all %}
+                              <div class="comment">
+                               <p class="info"> 
+
+                              <b>{{ comment.created }} added by {{ comment.name }}:</b> {{ comment.body }}
+                              
+                              </p>
+                              </div>
+                              {% empty %}
+                               <p> No comments yet. </p>
+                           {% endfor %}
+                           </td>
+                           <td>
+                              <a href="{% url 'add_new_comment' task.id %}  " class="btn btn-success">Add new comment</a>
+                           </tbody>
+                     </table>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+{% endblock  %}    
+{% endblock  %} 

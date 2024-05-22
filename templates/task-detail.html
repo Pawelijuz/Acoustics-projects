@@ -1,0 +1,20 @@
+{% extends 'glowny.html' %}
+</br>
+<a href="{% url 'wszystkie_projekty' %}" class="btn btn-success">Back to main</a>
+{% block strona %}
+ <div class="container-fluid">
+    <div class="row ">
+       <div class="col-md-12 ">
+             <div class="jumbotron">
+               <h4 class="display-4">{{task.category}}</h4>
+               <p class="lead">{{task.description}}</p>
+               <hr class="my-4">
+               <p>Date Created:  {{task.date_created}}</p>
+              
+               <a class="btn btn-primary btn-lg" href="#" role="button">Join Task</a>
+               
+             </div>
+       </div>
+    </div>
+ </div>
+{% endblock %}

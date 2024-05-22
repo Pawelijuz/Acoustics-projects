@@ -1,0 +1,12 @@
+<form>
+    <style>
+        .btn-text-right{
+            text-align: right;
+            }
+    </style>
+    <div class="btn-text-right">
+        <button type="button" class="btn btn-outline-success"><a href="{% url 'import_excel_pandas' %}">Upload projects </a><i class="fa-solid fa-upload"></i></button>
+        <button type="button" class="btn btn-outline-primary"><a href="{% url 'nowy_projekt' %}">New project </a><i class="fa-regular fa-file"></i></button>
+        <button type="button" class="btn btn-outline-danger"><a href="{% url 'usun_wszystkie' %}">Delete all </a><i class="fa-solid fa-skull-crossbones"></i></button>
+    </div>
+</form>

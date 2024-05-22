@@ -1,0 +1,22 @@
+{% extends 'glowny.html' %}
+
+{% block strona %}
+{% block detal %}
+{% with comments.count as total_comments %}
+                    <h6>
+                    {{ total_comments } comments}
+                    </h6>
+                    {% endwith %}
+                    {% for comment in comments %}
+                    <div class="comment">
+                        <p class="info">
+                            Comment {{ forloop.counter }} added by {{ comment.name }}
+                            {{ comment.created }}
+                        </p>
+                        {{ comment.body|linebreaks }}
+                    </div>
+                    {% empty %}
+                        <p> No comments yet. </p>
+                    {% endfor %}
+{% endblock  %}    
+{% endblock  %} 

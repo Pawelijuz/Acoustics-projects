@@ -1,0 +1,14 @@
+{% extends 'glowny.html' %}
+
+{% block strona %}
+{% if sent %}
+    <h6> E-mail was sent </h6>
+{% else %}
+    <h6> Do you want to send email? </h6>
+    <form action="." method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="submit" value="Send email">
+    </form>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'glowny.html' %}
+
+
+{% block strona %}
+
+<a href="{% url 'project-detail' projekt.id %}" class="btn btn-success">Back</a>
+
+<div class="card mask-custom">
+    <div class="card-body p-4 ">
+        <div class="row">             
+           <table class="table">
+                <h6>New task for project: {{projekt.Numer_IC}} {{ projekt.Nazwa }} </h6>
+                <td>
+                    {% if new_task %}
+                        <h6> Task added </h6>
+                    {% else %}
+                        <form method="post" enctype="multipart/form-data">    
+                            {% csrf_token %}
+                            <h6> Task category </h6>
+                            {{ form.category }}
+                            <h6> Decription </h6>
+                            {{ form.description}}
+                            <h6> Assignee </h6>
+                            {{ form.assignee }}
+                            <h6> Due date </h6>
+                            {{ form.due_date }}
+                            <h6> Drawings confirmation </h6>
+                            {{ form.confirmation_day }}
+                            <h6> Status </h6>
+                            {{ form.status }}
+                           
+                            <p><input type="submit" class="btn btn-success" value="Create task" ></p>
+                        </form>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

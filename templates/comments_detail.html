@@ -1,0 +1,16 @@
+{% extends 'glowny.html' %}
+
+{% block strona %}
+
+
+    {% if new_comment %}
+        <h2> Twój komentarz został dodany.</h2>
+    {% else %}
+        <h2> Dodaj nowy komentarz </h2>
+        <form action="." method="post">
+            {{ comment_form.as_p }}
+            {% csrf_token %}
+            <p><input type='submit' value="Dodaj komentarz"></p>
+        </form>
+    {% endif %}
+{% endblock  %}   

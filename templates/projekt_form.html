@@ -1,0 +1,14 @@
+{% extends 'glowny.html' %}
+{% load bootstrap %}
+
+{% block tytul %} Projekt form {% endblock %}
+
+{% block strona %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|bootstrap }}
+        <button type="submit">Dodaj projekt</button>
+    </form>
+        <a href="{% url 'wszystkie_projekty' %}">Cofnij</a>
+{% endblock %}
+

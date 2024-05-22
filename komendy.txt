@@ -1,0 +1,71 @@
+-tworzymy wirtualny folder w cmd:
+mkdir nazwa folderu
+
+-wchodzimy w ten folder i tworzymy środowisko virtualne:
+python -m venv venv (to drugie to nazwa folderu który możemy nazwać też venv)
+
+-aktywacja środowiska virtualnego:
+env\Scripts\activate
+
+instalacja django:
+pip install django
+
+-uruchomienie projektu:
+django-admin startproject nazwaprojektu . (spacja i kropka ozacza tworzenie projektu w obecnym folderze)
+
+-uruchomienie lokalnego serwera:
+python manage.py runserver
+
+-wchodzimy w Visual Studio Code
+-konfigurujemy VSC tak żeby za każdym razem nie trzeba było wpisywać komendy uruchamiającej serwer - w parameters 'manage.py' wpisujemy runserver
+- jakby był błąd security coś tam to w terminalu uruchomić to: Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
+
+
+-stworzenie nowej aplikacji (podaplikacji w projekcie), utworzy się nowy folder w projekcie:
+django-admin startapp filmyweb
+
+-aplikację dodajemy w settings, INSTALLED_APS
+
+python manage.py migrate
+-robimy administratora: python manage.py createsuperuser
+python manage.py makemigrations
+
+-tworzymy class, potem:
+	-python manage.py makemigrations
+	-python manage.py migrate
+
+rejestrujemy class w admin.py - from.models import Film
+admin.site.register(Film)
+
+w views tworzymy metodę (def) która ma określać widok (najpierw import: from django.http import HttpResponse):
+def test_response(request):
+	return HttpResponse("Widok testowy")
+można utworzyć plik template i stamtąd pobierać widok
+
+w zakładce urls podajemy adresy które ma wyświetlać aplikacja np:
+- path('test/', test_response)
+importujemy widoki z views: from mojerp.views import test_response
+lepiej jest zrobić plik urls.py do każdej aplikacji i tam trzymać adres tylko tej aplikacji - tak żeby się wczytywał do głównego urls
+
+- plik static - np "moj.css" to plik w którym określamy styl formularza - podpięte jest to do template "projekty.html", np że kolor tekstu ma bć czerwony
+
+CREATE:
+- plik forms robimy do wprowadzania nowego projektu
+- w urls podajemy nową ścieżkę
+- w views definiujemy nowy_projekt importując formularz z forms
+- w templates robimy plik html "nowy_projekt"
+
+Te poniższe komendy trzba wszystkie uruchomić po kolei:
+env\Scripts\activate
+rabbitmq-server - poprzez skrót
+celery -A mojeerp2 worker -l info --pool=solo
+
+jeśli chcemy uruchomić schedule z settings:
+celery -A mojeerp2 beat -l INFO
+
+jeśli chcemy uruchomić z ustawienia z panelu admin:
+celery -A mojeerp2 beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler
+
+#Start Flower
+celery -A mojeerp2 flower --port=5555
+# przechodzimy na przeglądarkę localhost:5555

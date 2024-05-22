@@ -1,0 +1,12 @@
+{% extends 'glowny.html' %}
+
+{% block tytul %} Potwierdź {% endblock %}
+
+{% block strona %}
+    <h1>Czy na pewno chcesz usunąć projekt IC {{ projekt.Numer_IC}}?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Usun projekt</button>
+    </form>
+    <a href="{% url 'wszystkie_projekty' %}">Cofnij</a>
+{% endblock %}

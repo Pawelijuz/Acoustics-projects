@@ -1,0 +1,26 @@
+{% extends 'glowny.html' %}
+{% load bootstrap %}
+{% block tytul %} Zaloguj się {% endblock %}
+
+{% block strona %}
+<i class="fa-solid fa-right-to-bracket fa-beat"></i>
+
+
+<div class="card" style="width: 26rem;">
+  <div class="card-body">
+    <h5 class="card-title">Projects - login</h5>
+    <form action="" method=POST> 
+      {% csrf_token %}
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Username</label>
+            <input type="text" class="form-control" name="username" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password">
+          </div>
+          <input type="submit" value="Submit" class="btn btn-secondary">
+    </form>
+  </div>
+</div>
+{% endblock %}

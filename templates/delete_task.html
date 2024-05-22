@@ -1,0 +1,15 @@
+{% extends 'glowny.html' %}
+
+{% block tytul %} Task delete {% endblock %}
+
+{% block strona %}
+    <h6>Do you really want to delete task:
+        <br>   <br />
+        category: {{task.category}}<br />
+        project: {{task.projekt}} ?<br /></h6>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Delete task</button>
+    </form>
+    <a href="{% url 'wszystkie_projekty' %}">Back</a>
+{% endblock %}
