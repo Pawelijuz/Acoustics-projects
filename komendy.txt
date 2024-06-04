@@ -69,3 +69,17 @@ celery -A mojeerp2 beat -l INFO --scheduler django_celery_beat.schedulers:Databa
 #Start Flower
 celery -A mojeerp2 flower --port=5555
 # przechodzimy na przeglądarkę localhost:5555
+
+githb
+Pawelijuz Dziewanny27
+
+PythonAnywhere
+acousticsprojects
+
+git status
+git commit - zatwierdzanie zmian
+git push - uaktualnianie gita
+
+pa_autoconfigure_django.py https://github.com/Pawelijuz/Acoustics-projects.git
+
+(Pawelijuz.pythonanywhere.com) $ python manage.py createsuperuser
