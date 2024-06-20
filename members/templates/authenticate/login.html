@@ -3,12 +3,25 @@
 {% block tytul %} Zaloguj się {% endblock %}
 
 {% block strona %}
+<html>
+<head>  
+  <style>
+    body {
+      background-image: url('/media/tapeta.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;  
+      background-size: cover;
+    }
+  </style>
+</head>
+<body>
+
 <i class="fa-solid fa-right-to-bracket fa-beat"></i>
 
 
 <div class="card" style="width: 26rem;">
   <div class="card-body">
-    <h5 class="card-title">Projects - login</h5>
+    <h5 class="card-title">Kvadrat Acoustics special projects - login</h5>
     <form action="" method=POST> 
       {% csrf_token %}
           <div class="mb-3">
@@ -23,4 +36,6 @@
     </form>
   </div>
 </div>
+</body>
+</html>
 {% endblock %}
