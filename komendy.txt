@@ -91,6 +91,8 @@ komunikat żeby zrobić commit lub stash:
 git stash
 git pull
 
+web: Working directory:/home/acousticsprojects/Acoustics-projects/
+
 
 
 
