@@ -351,8 +351,6 @@ def upload_test(request):
                 tsk.save()
                 #utworzenie zadania DELIVERY dla projektu nowego
                 if dbframe.Podwykonawca == "WMS":
-                    create_delivery_task(dbframe, obj, subcontractor_name="WMS", task_category="DELIVERY CONFIRMATION", date_format=None)
-                def create_delivery_task(dbframe, obj, subcontractor_name="WMS", task_category="DELIVERY CONFIRMATION", date_format=None):
                     try:    
                         subcontractor_id = convert_text_to_username(dbframe.Podwykonawca)
                         Projekt.user = User.objects.get(username=subcontractor_id)
