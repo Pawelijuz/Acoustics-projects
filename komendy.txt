@@ -77,7 +77,8 @@ PythonAnywhere
 acousticsprojects
 
 git status
-git commit - zatwierdzanie zmian
+git add - przygotowanie do wysyłki
+git commit-m "co się zmieniło"- zatwierdzanie zmian
 git push - uaktualnianie gita
 
 pa_autoconfigure_django.py https://github.com/Pawelijuz/Acoustics-projects.git
@@ -109,6 +110,14 @@ git fetch origin main:tmp
 git rebase tmp
 git push origin HEAD:main
 git branch -D tmp
+
+zamknięcie konsoli commit w pythonanywhere
+
+ctrl+c
+:exit
+
+
+python manage.py mycommand 
 
 
 

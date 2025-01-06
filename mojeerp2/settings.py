@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'members',
     'celery',
     'django_celery_beat',
+    'google_drive',
     
 ]
 
